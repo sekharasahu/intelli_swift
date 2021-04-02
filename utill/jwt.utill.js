@@ -1,25 +1,22 @@
 const jwt = require('jsonwebtoken');
 
 class Authenticate {
+    //To Authenticate every request comming
     static async auth(req, res, next) {
-        let url = req.url;
+        let authorization = req.headers.authorization;
 
-        if (url == '') {
-            res.status(200).send("Server is ruuning !!!");
+        if(authorization) {
+            let authToken = authorization.split(' ')[1];
+            try {
+                let isValid = await jwt.verify(authToken, process.env.JWT_SECRET_KEY);
+                next();
+            } catch (err) {
+                res.status(400).send('Unauthorized');
+            }
+
+        } else {
+            res.status(400).send('AUth token missing');
         }
-
-        if (url == '/token') {
-            let token = jwt.sign({}, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
-            res.status(200).send({
-                auth_token : token
-            });
-        }
-
-        console.log(req);
-
-
-
-
     }
 }
 
