@@ -1,10 +1,24 @@
 version: "3.2"
 services:
-  sql-server-db:
+  sql:
     container_name: sql
+    restart: always
     image: microsoft/mssql-server-linux:2017-latest
     ports:
       - "1433:1433"
     environment:
       SA_PASSWORD: "IntelliSwift@123"
       ACCEPT_EULA: "Y"
+          
+  # node-app :
+  #   build: .
+  #   container_name: node_app
+  #   command: npm run start
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - sql
+  #   links: 
+  #     - sql  
+      
+  

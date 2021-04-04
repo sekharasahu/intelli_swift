@@ -9,12 +9,12 @@ const sequelize = new Sequelize('master', 'sa', process.env.DB_PW,
 
 (async () => {
     try {
-        await sequelize.sync({alter : true});
+        //await sequelize.sync({ force: true });
         await sequelize.authenticate();
         //console.log('Connection has been established successfully.');
-      } catch (error) {
+    } catch (error) {
         console.error('Unable to connect to the database:', error);
-      }
+    }
 })();
 
 
@@ -26,6 +26,10 @@ User.init({
         autoIncrement: true,
         primaryKey: true
     },
+    identifier: {
+        type: DataTypes.UUID,
+        defaultValue: Sequelize.UUIDV4
+    },
     firstName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -34,9 +38,29 @@ User.init({
         type: DataTypes.STRING
         // allowNull defaults to true
     },
-    phone: {
+    city: {
         type: DataTypes.STRING
         // allowNull defaults to true
+    },
+    country: {
+        type: DataTypes.STRING
+        // allowNull defaults to true
+    },
+    age: {
+        type: DataTypes.SMALLINT
+        // allowNull defaults to true
+    },
+    gender: {
+        type: DataTypes.STRING
+        // allowNull defaults to true
+    },
+    phone: {
+        type: DataTypes.STRING,
+        unique: true
+    },
+    isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
     // Other model options go here
