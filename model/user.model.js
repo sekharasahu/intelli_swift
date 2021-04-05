@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
+const Util = require('../utill/util.class');
 const sequelize = new Sequelize('master', 'sa', process.env.DB_PW,
     {
         host: 'localhost',
@@ -11,6 +12,7 @@ const sequelize = new Sequelize('master', 'sa', process.env.DB_PW,
     try {
         await sequelize.sync({ force: true });
         await sequelize.authenticate();
+        await Util.createBulkUser(User);
         console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
