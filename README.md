@@ -43,7 +43,7 @@ Here -d stands to run in ditached mode.
 ## Step to test
 -------------------
 1. Once the app is up and running simply go inside the root folder and run the command 
-$ sudo npm run test.
+$ sudo npm i. This will install the node_modules in local. Than $ sudo npm run test.
 
 This should execute the test suits automatically.
 Based on the OS of host machine commnads may very.

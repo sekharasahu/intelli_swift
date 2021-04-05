@@ -16,7 +16,7 @@ services:
   sql:
     container_name: sql
     restart: always
-    image: microsoft/mssql-server-linux:2017-latest
+    image: mcr.microsoft.com/mssql/server
     ports:
       - "1433:1433"
     environment:
