@@ -2,7 +2,7 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 const Util = require('../utill/util.class');
 const sequelize = new Sequelize('master', 'sa', process.env.DB_PW,
     {
-        host: 'localhost',
+        host: 'sql',
         dialect: 'mssql',
         logging: false
     });

@@ -1,5 +1,18 @@
 version: "3.2"
 services:
+  node-app :
+    build: .
+    container_name: node_app
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - sql
+    links: 
+      - sql
+    environment:
+      WAIT_HOSTS: sql:1433
+
   sql:
     container_name: sql
     restart: always
@@ -9,16 +22,4 @@ services:
     environment:
       SA_PASSWORD: "IntelliSwift@123"
       ACCEPT_EULA: "Y"
-          
-  # node-app :
-  #   build: .
-  #   container_name: node_app
-  #   command: npm run start
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - sql
-  #   links: 
-  #     - sql  
-      
   
