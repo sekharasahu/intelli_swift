@@ -47,3 +47,7 @@ $ sudo npm i. This will install the node_modules in local. Than $ sudo npm run t
 
 This should execute the test suits automatically.
 Based on the OS of host machine commnads may very.
+
+## Postman collection
+---------------------
+A file named Intelli_swift.postman_collection.json contain all nessecery API structures. Please import it to postman and test it.
