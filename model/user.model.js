@@ -9,9 +9,9 @@ const sequelize = new Sequelize('master', 'sa', process.env.DB_PW,
 
 (async () => {
     try {
-        //await sequelize.sync({ force: true });
+        await sequelize.sync({ force: true });
         await sequelize.authenticate();
-        //console.log('Connection has been established successfully.');
+        console.log('Connection has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
